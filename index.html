@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>onFIRE — Personal Financial Independence Tracker</title>
+  <meta name="description" content="onFIRE is a personal financial independence and net worth tracking application that aggregates account balances, investment holdings, and liabilities to calculate progress toward FIRE (Financial Independence, Retire Early) goals.">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --bg-elevated: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --accent: #3fb950;
+      --accent-hover: #56d364;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 4rem;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent) 0%, #238636 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #0d1117;
+      font-size: 1.1rem;
+    }
+
+    .logo-text {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .logo-text .fire {
+      color: var(--accent);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 .accent {
+      color: var(--accent);
+    }
+
+    .lede {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+      margin-top: 3rem;
+    }
+
+    p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    @media (min-width: 640px) {
+      .features { grid-template-columns: 1fr 1fr; }
+    }
+
+    .feature {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+
+    .feature-title {
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      font-size: 0.95rem;
+    }
+
+    .feature-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .info-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .info-card p { margin-bottom: 0.75rem; }
+    .info-card p:last-child { margin-bottom: 0; }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(63, 185, 80, 0.12);
+      border: 1px solid rgba(63, 185, 80, 0.35);
+      color: var(--accent);
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer .links {
+      display: flex;
+      gap: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo-mark">o</div>
+      <span class="logo-text">on<span class="fire">FIRE</span></span>
+    </header>
+
+    <main>
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        In development
+      </div>
+
+      <h1>Track your path to <span class="accent">financial independence.</span></h1>
+
+      <p class="lede">
+        onFIRE is a personal net-worth and FIRE-progress tracker. Connect your accounts, see your full financial picture in one place, and know exactly how close you are to financial independence.
+      </p>
+
+      <h2>What it does</h2>
+      <div class="features">
+        <div class="feature">
+          <div class="feature-title">Unified net worth</div>
+          <div class="feature-desc">Aggregates balances across checking, savings, brokerage, retirement, and loan accounts.</div>
+        </div>
+        <div class="feature">
+          <div class="feature-title">Investment tracking</div>
+          <div class="feature-desc">Follows holdings and performance across taxable and tax-advantaged accounts.</div>
+        </div>
+        <div class="feature">
+          <div class="feature-title">FIRE progress</div>
+          <div class="feature-desc">Calculates your FI number, savings rate, and projected timeline to independence.</div>
+        </div>
+        <div class="feature">
+          <div class="feature-title">Secure by design</div>
+          <div class="feature-desc">Bank connections use Plaid. Credentials are never stored or seen by onFIRE.</div>
+        </div>
+      </div>
+
+      <h2>How account connections work</h2>
+      <p>
+        onFIRE uses <a href="https://plaid.com" target="_blank" rel="noopener">Plaid</a> to securely connect to supported financial institutions. When you link an account, you authenticate directly with your bank — onFIRE never sees or stores your banking credentials.
+      </p>
+
+      <h2>About</h2>
+      <div class="info-card">
+        <p>onFIRE is an independent project developed by an individual developer based in Idaho, USA.</p>
+        <p>Questions, feedback, or privacy inquiries: <a href="mailto:truexclaude@gmail.com">truexclaude@gmail.com</a></p>
+      </div>
+    </main>
+
+    <footer>
+      <div>&copy; 2026 onFIRE</div>
+      <div class="links">
+        <a href="./privacy.html">Privacy Policy</a>
+        <a href="mailto:truexclaude@gmail.com">Contact</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
